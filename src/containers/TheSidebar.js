@@ -16,7 +16,7 @@ import CIcon from '@coreui/icons-react'
 
 // sidebar nav config
 import navigation from './_nav'
-
+import logo from "../assets/icons/Trustest-Logo.jpg";
 const TheSidebar = () => {
   const dispatch = useDispatch()
   const show = useSelector(state => state.sidebarShow)
@@ -30,7 +30,8 @@ const TheSidebar = () => {
         <CIcon
           className="c-sidebar-brand-full"
           name="logo-negative"
-          height={35}
+          src={logo}
+          height={100}
         />
         <CIcon
           className="c-sidebar-brand-minimized"
