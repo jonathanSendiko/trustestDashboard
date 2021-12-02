@@ -45,6 +45,7 @@ export const Index = () => {
         };
         getMahasiswa();
     })
+    
     return (
       <div>
         <CForm>
