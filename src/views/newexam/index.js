@@ -3,13 +3,20 @@ import { useState, useEffect } from "react";
 import "./style.css";
 import { CForm, CFormGroup, CLabel, CInput, CButton } from "@coreui/react";
 import { db } from "src/firebase.js";
-import { collection, addDoc, getDocs, Timestamp, doc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  Timestamp,
+  doc,
+  deleteDoc
+} from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 export const NewExam = () => {
   const auth = getAuth();
   //const user = auth.currentUser;
-  
+
   const [quizzes, setQuiz] = useState([]);
   const [quizName_, setquizName] = useState("");
   const [subjectName_, setsubjectName] = useState("");
@@ -43,7 +50,7 @@ export const NewExam = () => {
           searchInternet: searchinternet_,
           teamwork: teamwork_,
           useCalculator: usecalculator_,
-        }
+        },
         //Email: user.email
       });
     } catch (error) {
@@ -51,13 +58,19 @@ export const NewExam = () => {
     }
   };
 
+  const deleteData = async (id) => {
+    console.log(id);
+    const docQuiz = doc(db, "quizes", id);
+    await deleteDoc(docQuiz);
+  };
+
   useEffect(() => {
     const getQuiz = async () => {
-        const dataQuiz = await getDocs(ujianCollectionRef);
-        setQuiz(dataQuiz.docs.map((doc) => ({...doc.data(), id: doc.id})))
+      const dataQuiz = await getDocs(ujianCollectionRef);
+      setQuiz(dataQuiz.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getQuiz();
-})
+  }, []);
 
   const str2bool = (value) => {
     if (value && typeof value === "string") {
@@ -69,27 +82,6 @@ export const NewExam = () => {
 
   return (
     <div>
-      {quizzes.map((quiz) => { 
-        return (
-          <div>
-            <h2>Nama Ujian: {quiz.quizName}</h2>
-            <h2>Mata Kuliah: {quiz.subjectName}</h2>
-            <h2>Durasi Ujian: {quiz.timeLimit} menit</h2>
-            <h2>Jumlah Pertanyaan: {quiz.numOfQuestions}</h2>
-            <h2>Waktu Ujian Dimulai: {quiz.startDate.toDate().toString()}</h2>
-            <h2>Waktu Ujian Berakhir: {quiz.endDate.toDate().toString()}</h2>
-            <h2>Rules:</h2>
-            <ul>
-              <li>Open Book: {quiz.rules.openBook.toString()}</li>
-              <li>Plagiarism: {quiz.rules.plagiarism.toString()}</li>
-              <li>Scrap Paper: {quiz.rules.scrapPaper.toString()}</li>
-              <li>Search The Internet: {quiz.rules.searchInternet.toString()}</li>
-              <li>Team Work: {quiz.rules.teamwork.toString()}</li>
-              <li>Use Calculator: {quiz.rules.useCalculator.toString()}</li>
-            </ul>
-          </div>
-        ); 
-        })}
       <h1>Buat Ujian Baru</h1>
       <div>
         <CForm>
@@ -228,6 +220,37 @@ export const NewExam = () => {
           Add Ujian
         </CButton>
       </div>
+      {quizzes.map((quiz) => {
+        return (
+          <div>
+            <h2>Nama Ujian: {quiz.quizName}</h2>
+            <h2>Mata Kuliah: {quiz.subjectName}</h2>
+            <h2>Durasi Ujian: {quiz.timeLimit} menit</h2>
+            <h2>Jumlah Pertanyaan: {quiz.numOfQuestions}</h2>
+            <h2>Waktu Ujian Dimulai: {quiz.startDate.toDate().toString()}</h2>
+            <h2>Waktu Ujian Berakhir: {quiz.endDate.toDate().toString()}</h2>
+            <h2>Rules:</h2>
+            <ul>
+              <li>Open Book: {quiz.rules.openBook.toString()}</li>
+              <li>Plagiarism: {quiz.rules.plagiarism.toString()}</li>
+              <li>Scrap Paper: {quiz.rules.scrapPaper.toString()}</li>
+              <li>
+                Search The Internet: {quiz.rules.searchInternet.toString()}
+              </li>
+              <li>Team Work: {quiz.rules.teamwork.toString()}</li>
+              <li>Use Calculator: {quiz.rules.useCalculator.toString()}</li>
+            </ul>
+            <CButton
+              color="danger"
+              onClick={() => {
+                deleteData(quiz.id);
+              }}
+            >
+              Delete Mahasiswa
+            </CButton>
+          </div>
+        );
+      })}
     </div>
   );
 };
