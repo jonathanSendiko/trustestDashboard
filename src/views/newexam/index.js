@@ -30,6 +30,7 @@ export const NewExam = () => {
   const [searchinternet_, setSearchInternet] = useState(false);
   const [teamwork_, setTeamwork] = useState(false);
   const [usecalculator_, setUseCalculator] = useState(false);
+  const [npm, setNpm] = useState([]);
   const ujianCollectionRef = collection(db, "quizes");
 
   const addData = async () => {
@@ -51,7 +52,7 @@ export const NewExam = () => {
           teamwork: teamwork_,
           useCalculator: usecalculator_,
         },
-        //Email: user.email
+        students: npm.split(",")
       });
     } catch (error) {
       console.log(error);
@@ -216,6 +217,16 @@ export const NewExam = () => {
             </select>
           </form>
         </div>
+        <CFormGroup>
+            <CLabel>NPM Peserta Ujian</CLabel>
+            <CInput
+              type="text"
+              placeholder="Masukkan NPM Peserta Ujian"
+              onChange={(event) => {
+                setNpm(event.target.value);
+              }}
+            />
+          </CFormGroup>
         <CButton color="primary" onClick={addData}>
           Add Ujian
         </CButton>
@@ -240,6 +251,7 @@ export const NewExam = () => {
               <li>Team Work: {quiz.rules.teamwork.toString()}</li>
               <li>Use Calculator: {quiz.rules.useCalculator.toString()}</li>
             </ul>
+            <div>Students: {quiz.students.toString()}</div>
             <CButton
               color="danger"
               onClick={() => {
