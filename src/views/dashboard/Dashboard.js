@@ -1,8 +1,10 @@
 import CRUD from '../CRUD'
+import Quizes from '../Quizes'
 
 const Dashboard = () => {
   return (
-    <CRUD/>
+    // <CRUD/>
+    <Quizes/>
   )
 }
 

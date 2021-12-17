@@ -16,6 +16,8 @@ const Login = React.lazy(() => import("./views/pages/login/Login"));
 const Register = React.lazy(() => import("./views/pages/register/Register"));
 const Page404 = React.lazy(() => import("./views/pages/page404/Page404"));
 const Page500 = React.lazy(() => import("./views/pages/page500/Page500"));
+const Quizdetail = React.lazy(() => import("./views/pages/Quizdetail/index"));
+const Userdetail = React.lazy(() => import("./views/pages/Userdetail/index"));
 
 class App extends Component {
   render() {
@@ -51,6 +53,16 @@ class App extends Component {
               path="/"
               name="Home"
               render={(props) => <TheLayout {...props} />}
+            />
+            <Route
+              path="/quizdetail"
+              name="Quizdetail"
+              render={(props) => <Quizdetail {...props} />}
+            />
+            <Route
+              path="/userdetail"
+              name="Userdetail"
+              render={(props) => <Userdetail {...props} />}
             />
           </Switch>
         </React.Suspense>

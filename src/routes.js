@@ -38,6 +38,8 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const NewExam = React.lazy(() => import('./views/newexam'));
+const Quizdetail = React.lazy(() => import("./views/pages/Quizdetail/index"));
+const Userdetail = React.lazy(() => import("./views/pages/Userdetail/index"));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -80,7 +82,9 @@ const routes = [
   { path: '/widgets', name: 'Widgets', component: Widgets },
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
-  { path: '/newexam', exact: true, name: 'Buat Ujian Baru', component: NewExam }
+  { path: '/newexam', exact: true, name: 'Buat Ujian Baru', component: NewExam },
+  { path: '/quizdetail', exact: true, name: 'Detail Quiz', component: Quizdetail },
+  { path: '/userdetail', exact: true, name: 'Detail User', component: Userdetail }
 ];
 
 export default routes;
