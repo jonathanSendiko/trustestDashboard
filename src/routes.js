@@ -38,12 +38,9 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const NewExam = React.lazy(() => import('./views/newexam'));
-<<<<<<< Updated upstream
 const Quizdetail = React.lazy(() => import("./views/pages/Quizdetail/index"));
 const Userdetail = React.lazy(() => import("./views/pages/Userdetail/index"));
-=======
 const UpdateExam = React.lazy(() => import('./views/updateexam'));
->>>>>>> Stashed changes
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -87,12 +84,9 @@ const routes = [
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
   { path: '/newexam', exact: true, name: 'Buat Ujian Baru', component: NewExam },
-<<<<<<< Updated upstream
   { path: '/quizdetail', exact: true, name: 'Detail Quiz', component: Quizdetail },
-  { path: '/userdetail', exact: true, name: 'Detail User', component: Userdetail }
-=======
+  { path: '/userdetail', exact: true, name: 'Detail User', component: Userdetail },
   { path: '/updateexam', exact: true, name: 'Update Ujian', component: UpdateExam }
->>>>>>> Stashed changes
 ];
 
 export default routes;

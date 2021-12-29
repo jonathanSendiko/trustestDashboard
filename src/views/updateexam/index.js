@@ -23,6 +23,7 @@ export const UpdateExam = () => {
         query(ujianCollectionRef, where("subjectName", "==", { matkul }))
       );
       setQuiz(dataQuiz.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      console.log(doc.id);
     };
     getQuiz();
   }, [matkul]);
