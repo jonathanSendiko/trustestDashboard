@@ -9,7 +9,7 @@ import {
   getDocs,
   Timestamp,
   doc,
-  deleteDoc
+  deleteDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
@@ -52,7 +52,7 @@ export const NewExam = () => {
           teamwork: teamwork_,
           useCalculator: usecalculator_,
         },
-        students: npm.split(",")
+        students: npm.split(","),
       });
     } catch (error) {
       console.log(error);
@@ -218,15 +218,15 @@ export const NewExam = () => {
           </form>
         </div>
         <CFormGroup>
-            <CLabel>NPM Peserta Ujian</CLabel>
-            <CInput
-              type="text"
-              placeholder="Masukkan NPM Peserta Ujian"
-              onChange={(event) => {
-                setNpm(event.target.value);
-              }}
-            />
-          </CFormGroup>
+          <CLabel>NPM Peserta Ujian</CLabel>
+          <CInput
+            type="text"
+            placeholder="Masukkan NPM Peserta Ujian"
+            onChange={(event) => {
+              setNpm(event.target.value);
+            }}
+          />
+        </CFormGroup>
         <CButton color="primary" onClick={addData}>
           Add Ujian
         </CButton>
