@@ -11,10 +11,8 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 
 export const NewExam = () => {
-  const auth = getAuth();
   //const user = auth.currentUser;
 
   const [quizzes, setQuiz] = useState([]);
@@ -40,8 +38,6 @@ export const NewExam = () => {
         quizName: quizName_,
         numOfQuestion: numberOfQuestion_,
         timeLimit: timeLimit_,
-        startDate: startDate_,
-        endDate: endDate_,
         startDate: startDate_,
         endDate: endDate_,
         rules: {
@@ -71,7 +67,7 @@ export const NewExam = () => {
       setQuiz(dataQuiz.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getQuiz();
-  }, []);
+  }, [ujianCollectionRef]);
 
   const str2bool = (value) => {
     if (value && typeof value === "string") {

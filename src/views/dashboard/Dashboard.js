@@ -1,11 +1,10 @@
-import CRUD from '../CRUD'
-import Quizes from '../Quizes'
+import Quizes from "../Quizes";
 
 const Dashboard = () => {
   return (
     // <CRUD/>
-    <Quizes/>
-  )
-}
+    <Quizes />
+  );
+};
 
-export default Dashboard
+export default Dashboard;

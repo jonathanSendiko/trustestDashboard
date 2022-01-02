@@ -2,15 +2,8 @@ import { query } from "firebase/firestore";
 import React from "react";
 import { useState, useEffect } from "react";
 import { db } from "src/firebase.js";
-import { CForm, CFormGroup, CLabel, CInput, CButton } from "@coreui/react";
-import {
-    collection,
-    addDoc,
-    getDocs,
-    where,
-    doc,
-    deleteDoc,
-  } from "firebase/firestore";
+import { CForm, CFormGroup, CLabel, CInput } from "@coreui/react";
+import { collection, getDocs, where, doc } from "firebase/firestore";
 
 export const UpdateExam = () => {
   const [quizzes, setQuiz] = useState([]);
@@ -26,22 +19,22 @@ export const UpdateExam = () => {
       console.log(String(doc.id));
     };
     getQuiz();
-  }, [matkul]);
+  }, [matkul, ujianCollectionRef]);
 
   return (
     <div>
-        <CForm>
-          <CFormGroup>
-            <CLabel>Nama Ujian Yang Ingin Diupdate</CLabel>
-            <CInput
-              type="text"
-              placeholder="Masukkan Nama Kuliah Yang ingin diupdate"
-              onChange={(event) => {
-                setMatkul(event.target.value);
-              }}
-            />
-          </CFormGroup>
-        </CForm>
+      <CForm>
+        <CFormGroup>
+          <CLabel>Nama Ujian Yang Ingin Diupdate</CLabel>
+          <CInput
+            type="text"
+            placeholder="Masukkan Nama Kuliah Yang ingin diupdate"
+            onChange={(event) => {
+              setMatkul(event.target.value);
+            }}
+          />
+        </CFormGroup>
+      </CForm>
       {quizzes.map((quiz) => {
         return (
           <div>
