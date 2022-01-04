@@ -42,8 +42,8 @@ const Quizdetail = () => {
     []
   );
 
-  const sessionClicked = (user) => {
-    console.log(user);
+  const sessionClicked = (user, sessionLogs) => {
+    user.logs = sessionLogs
     routeToUserDetail(user);
   };
 
@@ -77,7 +77,7 @@ const Quizdetail = () => {
                   <CCardText>{theUser.npm}</CCardText>
                   <CButton
                     color="primary"
-                    onClick={() => sessionClicked(theUser)}
+                    onClick={() => sessionClicked(theUser, session.logs)}
                   >
                     Check
                   </CButton>
