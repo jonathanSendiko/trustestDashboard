@@ -14,12 +14,12 @@ const _nav =  [
     to: '/newexam',
     icon: <CIcon name="cil-pencil" customClasses="c-sidebar-nav-icon"/>,
   },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Update Ujian',
-    to: '/updateexam',
-    icon: <CIcon name="cil-pencil" customClasses="c-sidebar-nav-icon"/>,
-  }
+  // {
+  //   _tag: 'CSidebarNavItem',
+  //   name: 'Update Ujian',
+  //   to: '/updateexam',
+  //   icon: <CIcon name="cil-pencil" customClasses="c-sidebar-nav-icon"/>,
+  // }
 ]
 
 export default _nav

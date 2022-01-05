@@ -227,38 +227,6 @@ export const NewExam = () => {
           Add Ujian
         </CButton>
       </div>
-      {quizzes.map((quiz) => {
-        return (
-          <div>
-            <h2>Nama Ujian: {quiz.quizName}</h2>
-            <h2>Mata Kuliah: {quiz.subjectName}</h2>
-            <h2>Durasi Ujian: {quiz.timeLimit} menit</h2>
-            <h2>Jumlah Pertanyaan: {quiz.numOfQuestions}</h2>
-            <h2>Waktu Ujian Dimulai: {quiz.startDate.toDate().toString()}</h2>
-            <h2>Waktu Ujian Berakhir: {quiz.endDate.toDate().toString()}</h2>
-            <h2>Rules:</h2>
-            <ul>
-              <li>Open Book: {quiz.rules.openBook.toString()}</li>
-              <li>Plagiarism: {quiz.rules.plagiarism.toString()}</li>
-              <li>Scrap Paper: {quiz.rules.scrapPaper.toString()}</li>
-              <li>
-                Search The Internet: {quiz.rules.searchInternet.toString()}
-              </li>
-              <li>Team Work: {quiz.rules.teamwork.toString()}</li>
-              <li>Use Calculator: {quiz.rules.useCalculator.toString()}</li>
-            </ul>
-            <div>Students: {quiz.students.toString()}</div>
-            <CButton
-              color="danger"
-              onClick={() => {
-                deleteData(quiz.id);
-              }}
-            >
-              Delete Mahasiswa
-            </CButton>
-          </div>
-        );
-      })}
     </div>
   );
 };
